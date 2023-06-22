@@ -1,4 +1,5 @@
 # segundop_SPD
+
 Sistema de incendio -- Arduino
 
 - Objetivo
@@ -55,11 +56,57 @@ Cuando se detecta un incendio, muestra un mensaje de alarma en el display LCD.
 
 ![image](https://github.com/sebasartorato/segundop_SPD/assets/86857108/99856e7c-1521-4e32-88e1-a7b7542c89e9)
 
-Diagrama esquemático:
+**Diagrama esquemático:**
 (https://github.com/sebasartorato/segundop_SPD/files/11840063/Segundo.parcial.SPD.pdf)
 
-Link del Proyecto:
+**Link del Proyecto:**
 https://www.tinkercad.com/things/5x3Cb5nNQJO-segundo-parcial-spd/editel?sharecode=Q6paYDfQQ6B8NtYk9NaXz0cRMMq_PzSscTqGUYolE5c
 
 
+**Documentación código:**
 
+Utilicé include para importar bibliotecas del LCD, Servo y control infrarrojo.
+
+#include <LiquidCrystal.h> // Para el LCD
+#include <IRremote.h> // Para el Control IR
+#include <Servo.h>
+
+Definí las constantes para los pines.
+
+#define SENSOR_TEMPERATURA A0
+#define LED_1 12
+#define LED_2 13 
+#define CONTROL_IR 11
+#define SERVOMOTOR 9
+#define limiteTemperatura 50 
+
+
+
+irRecibidor: recibe como parametro el pin del control IR
+lcd: recibe los parametros de los pines del LCD
+servoMotor: se utiliza para controlar el servomotor
+
+
+**Función controlRemotoIR** 
+
+Se utiliza para tomar el estado del control remoto y luego prender led izquierdo si es que se baja de temperatura y led derecho si se sube.
+
+**Función estacionAnio**
+
+Función que se utiliza para determinar la estación según la temperatura.
+
+**Función imprimirTemperatura**
+
+Funcion que imprime la temperatura y la estación del año en el LCD.
+
+**Función prendeApagaLed**
+
+Función que apaga y prende leds según sus parámetros.
+
+**Función alarmaIncendio**
+
+Función que imprimi 'Incendio' en el LCD al sobrepasar el límite de temperatura.
+
+**Función titilarLeds**
+
+Función que titila los leds cuando hay un incendio.
